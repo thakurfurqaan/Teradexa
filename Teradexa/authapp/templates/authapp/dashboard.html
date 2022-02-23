@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock title %}
+{% block content %}
+<h1>Hey <i>{{user.username}}!</i></h1>
+<br>
+<hr>
+{% if posts %}
+<h5 class="my-3">Your Posts</h5>
+{% for post in posts %}
+<div class="alert alert-secondary" role="alert">
+    {{post.text}}
+</div>
+{% endfor %}
+<a href="{% url 'authapp:create_post' %}" class="btn btn-success">Create a New Post</a>
+{% else %}
+<p>No posts to display!</p>
+<a href="{% url 'authapp:create_post' %}" class="btn btn-success">Create your First Post</a>
+{% endif%}
+{% endblock content %}
